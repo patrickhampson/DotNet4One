@@ -68,11 +68,13 @@ namespace Terradue.OpenNebula {
         /// </summary>
         /// <value>The session SHA.</value>
         protected string SessionSHA { 
-            get { 
-                TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
-                string token = String.Format("{0}:{1}:{2}", this.AdminUsername, this.TargetUsername, span.TotalSeconds + 3600);
-                string encryptToken = OpenSslAes.Encrypt(token, this.AdminPassword);
-                return String.Format("{0}:{1}:{2}", this.AdminUsername, this.TargetUsername, encryptToken);
+            get {
+                if(string.IsNullOrWhiteSpace(this.TargetUsername) || this.TargetUsername.Equals(this.AdminUsername))
+                {
+                    return $"{this.AdminUsername}:{this.AdminPassword}";
+                }
+
+                return $"{this.AdminUsername}:{this.AdminPassword}:{this.TargetUsername}";
             } 
         }
 

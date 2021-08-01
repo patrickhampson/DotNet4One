@@ -1,90 +1,23 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E488F0B0-3464-4D03-8E2E-8DA1936E3699}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Terradue.OpenNebula</RootNamespace>
-    <AssemblyName>Terradue.OpenNebula</AssemblyName>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageVersion>2.0.0</PackageVersion>
+    <Authors>Enguerran Boissier</Authors>
+    <Copyright>2021</Copyright>
+    <PackageLicenseUrl>https://github.com/Terradue/DotNet4One/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Terradue/DotNet4One</PackageProjectUrl>
+    <Title>Terradue.OpenNebula</Title>
+    <Description>DotNet4One is a library targeting .NET 4.0 and above providing an easy way to perform requests on any XML-RPC method exposed by an OpenNebula server.</Description>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
-    </Reference>
-    <Reference Include="CookComputing.XmlRpcV2">
-      <HintPath>..\packages\xmlrpcnet.2.5.0\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
-    </Reference>
-    <Reference Include="NuGet4Mono.Extensions">
-      <HintPath>..\packages\NuGet4Mono.Extensions.0.3.0\lib\net40\NuGet4Mono.Extensions.dll</HintPath>
-    </Reference>
+    <None Remove="Kveer.XmlRPC" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\acct.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\cluster_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\datastore_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\group_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\host_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\image_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\user_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\vm_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\vmtemplate_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\Generated\vnet_pool.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcUserManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcImageManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcTemplateManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualMachineManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcVirtualNetworkManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcHostManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcClusterManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcGroupManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcDatastoreManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\XmlRpc\XmlRpcZoneManagement.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Cluster.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Datastore.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Group.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Host.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Image.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Template.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.User.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.VM.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.VNet.cs" />
-    <Compile Include="Terradue\OpenNebula\OneClient.Zone.cs" />
-    <Compile Include="Terradue\OpenNebula\OpenSslAes.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Terradue\" />
-    <Folder Include="Terradue\OpenNebula\" />
-    <Folder Include="xsd\" />
-    <Folder Include="Terradue\OpenNebula\Generated\" />
-    <Folder Include="Terradue\OpenNebula\XmlRpc\" />
+    <PackageReference Include="Kveer.XmlRPC" Version="1.2.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Terradue.OpenNebula.csproj" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <Import Project="$(ProjectDir)\..\.nuget\NuGet.targets" Condition="Exists('$(ProjectDir)\..\.nuget\NuGet.targets')" />
 </Project>
